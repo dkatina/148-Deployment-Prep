@@ -41,10 +41,9 @@ def rate_limit_config(app):
     limiter.limit("100 per hour")(customer_blueprint)
 
 
-if __name__ == '__main__':
-    app = create_app('DevelopmentConfig')
 
-    with app.app_context():
+app = create_app('ProductionConfig')
+
+with app.app_context():
         db.create_all()
 
-    app.run()
